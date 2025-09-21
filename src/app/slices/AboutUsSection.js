@@ -10,7 +10,7 @@ import { AuroraBackground } from "../components/ui/aurora-background";
 
 const AboutUsSection = forwardRef( (props, ref) =>  { 
 
-
+AboutUsSection.displayName = "Who We Are"
     const [isClicked, setIsClicked] = useState(false)
     const aboutBullets = ['Human-centered creativity', 'Intentional Design', 'Results-driven'] 
 

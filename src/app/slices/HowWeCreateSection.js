@@ -32,6 +32,7 @@ function SuperscriptButton({ text, link }) {
 
 const HowWeCreateSection = forwardRef((props, ref) =>  { 
 
+  HowWeCreateSection.displayName = "How We Create"
     const howWeCreateBullets = ["1. Refine, don't reinvent", '2. Precision over excess', '3. Sustainable evolution'] 
     
     
