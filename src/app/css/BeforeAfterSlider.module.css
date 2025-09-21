@@ -1,0 +1,8 @@
+.sliderContainer { 
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    user-select: none;
+}
