@@ -220,6 +220,8 @@ export default function Home() {
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false)
+
   };
 
   //Scroll to "How We Create Section"
@@ -228,6 +230,7 @@ export default function Home() {
 
   const scrollToHow = () => {
     howRef.current?.scrollIntoView({behavior: 'smooth'})
+    setIsOpen(false)
   }
 
 
