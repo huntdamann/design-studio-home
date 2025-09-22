@@ -89,7 +89,7 @@ const Slider = () => {
         >
        <Image
           id="image"
-          src="/picture/lucky-screen.png"
+          src="/picture/lucky-screen.PNG"
           width={600}
           height={338}
           alt="top"
@@ -281,7 +281,7 @@ export default function Home() {
       <AnimatePresence>
       {isOpen && ( 
 
-          <motion.header id="nav" initial={{opacity: 0, x: -100}} animate={{opacity: 1, x: 0}} exit={{opacity: 0, x: -100}} className="rounded-tr-md z-[60] rounded-br-md  flex flex-col justify-center fixed w-[80%] lg:w-[15%] h-screen">
+          <motion.header id="nav" initial={{opacity: 0, x: -100}} animate={{opacity: 1, x: 0}} exit={{opacity: 0, x: -100}} className="rounded-tr-md z-[60] rounded-br-md  flex flex-col justify-center fixed w-[100%] lg:w-[15%] h-screen">
 
                 <FaCircleChevronLeft onClick={handleOpen} className="absolute  top-3" />
 
