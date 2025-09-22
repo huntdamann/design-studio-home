@@ -66,7 +66,7 @@ const HowWeCreateSection = forwardRef((props, ref) =>  {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ amount: 0.5, once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="text-xs sm:text-sm flex flex-col gap-2 uppercase text-center sm:text-left"
+      className="text-xs sm:text-sm flex flex-col md:flex-row gap-2 uppercase text-center sm:text-left"
     >
       revenue increase from consistent branding
       <SuperscriptButton
@@ -84,7 +84,7 @@ const HowWeCreateSection = forwardRef((props, ref) =>  {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ amount: 0.5, once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="uppercase flex flex-col gap-2 text-center sm:text-left text-sm"
+      className="uppercase flex flex-col gap-2 md:flex-row text-center sm:text-left text-sm"
     >
       Market share gain with strong branding
     </motion.span>
@@ -98,7 +98,7 @@ const HowWeCreateSection = forwardRef((props, ref) =>  {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ amount: 0.5, once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="uppercase flex flex-col gap-2 text-center sm:text-left text-sm"
+      className="uppercase flex flex-col gap-2 md:flex-row text-center sm:text-left text-sm"
     >
       of customers buy from recognized brands
       <SuperscriptButton
@@ -109,14 +109,14 @@ const HowWeCreateSection = forwardRef((props, ref) =>  {
   </div>
 
   {/* Block 4 */}
-  <div className="flex flex-col sm:flex-row items-center sm:items-end gap-2 sm:gap-4">
+  <div className="flex flex-col sm:flex-row  items-center sm:items-end gap-2 sm:gap-4">
     <AnimatedCounter finalValue={94} />
     <motion.span
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ amount: 0.5, once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="uppercase flex flex-col gap-2 text-center sm:text-left text-sm"
+      className="uppercase flex flex-col gap-2 md:flex-row text-center sm:text-left text-sm"
     >
       of first impressions are design-related
       <SuperscriptButton

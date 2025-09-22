@@ -1,16 +1,22 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { motion } from 'motion/react'
+import { motion, useInView } from 'motion/react'
 
 export default function AnimatedCounter({ finalValue  }) {
     const [count, setCount] = useState(0);
     const [direction, setDirection] = useState('up'); // 'up' or 'down'
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true, amount: 0.6 }); 
+
   
     useEffect(() => {
       let interval;
   
+      if (isInView) {
+
+      
       interval = setInterval(() => {
         setCount((prev) => {
           if (direction === 'up') {
@@ -28,12 +34,13 @@ export default function AnimatedCounter({ finalValue  }) {
           }
         });
       }, 30);
+    }
   
       return () => clearInterval(interval);
-    }, [direction, finalValue]);
+    }, [direction, finalValue, isInView]);
   
     return (
-      <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={0.6} className="lg:text-7xl text-5xl opacity-50 font-bold font-mono text-[#40e0d0]">
+      <motion.div ref={ref} initial={{opacity: 0}} whileInView={{opacity: 1}} className="lg:text-7xl text-5xl opacity-50 font-bold font-mono text-[#40e0d0]">
         {count}%
       </motion.div>
     );
