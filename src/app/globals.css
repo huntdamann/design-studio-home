@@ -103,8 +103,8 @@ p {
   top: 0;
   bottom: 0;
   width: 3px;
-  background-color: blue;
-  z-index: 10;
+  background-color: silver;
+  z-index: 80;
   cursor: ew-resize;
   display: flex;
   justify-content: center;

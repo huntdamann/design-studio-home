@@ -25,26 +25,29 @@ const Slider = () => {
   const videoRef = useRef(null);
   const x = useMotionValue(0);
   const [containerWidth, setContainerWidth] = useState(0);
-  const [label, setLabel] = useState("Before"); // Label state
+  const [label, setLabel] = useState("Before");
 
-
+  // Recalculate width on mount + resize
   useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      const { width } = container.getBoundingClientRect();
-      setContainerWidth(width);
-      x.set(width / 2); // start in middle
-    }
+    const updateWidth = () => {
+      if (containerRef.current) {
+        const { width } = containerRef.current.getBoundingClientRect();
+        setContainerWidth(width);
+        x.set(width / 2); // start centered
+      }
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
   }, [x]);
 
-  // Watch motion value and trigger video
-  // Watch motion value and trigger video / label update
+  // Watch motion value and trigger video/label
   useEffect(() => {
     const unsubscribe = x.on("change", (latest) => {
-      const threshold = 50; // px tolerance for detecting “fully left”
-      
+      const threshold = 50; // px tolerance
       if (latest <= threshold) {
-        setLabel("After"); // overlay scrolled to left
+        setLabel("After");
         if (videoRef.current) videoRef.current.play();
       } else {
         setLabel("Before");
@@ -55,46 +58,38 @@ const Slider = () => {
   }, [x]);
 
   return (
-    <section className=" mt-8 text-center flex flex-col gap-4 place-items-center h-full w-screen">
+    <section className="mt-8 text-center p-4 flex flex-col gap-4 place-items-center w-full">
       <h3>
-        <a href="https://luckyliquid.org">
-        
-        
-        Lucky Tea
-        </a>
-        </h3>
+        <a href="https://luckyliquid.org">Lucky Tea</a>
+      </h3>
 
       <div
-        id="slider-container"
         ref={containerRef}
-        className="relative w-full rounded-md max-w-[600px] aspect-video overflow-hidden"
+        className="relative w-full rounded-md max-w-[600px] aspect-[4/3] sm:aspect-video overflow-hidden"
       >
-        {/* Background image */}
-      
+        {/* Background video */}
         <video
-            ref={videoRef}
-            src="/videos/lucky-demo.mp4"
-            muted
-            playsInline
-            loop
-            preload="auto"
-            className="w-full h-full object-cover"
-          />
+          ref={videoRef}
+          src="/videos/lucky-demo.mp4"
+          muted
+          playsInline
+          loop
+          preload="auto"
+          className="w-full h-full object-cover"
+        />
 
-        {/* Overlay video instead of image */}
+        {/* Overlay image */}
         <motion.div
-          id="image-overlay"
           style={{ width: x }}
           className="absolute top-0 left-0 h-full overflow-hidden"
         >
-       <Image
-          id="image"
-          src="/picture/lucky-screen.PNG"
-          width={600}
-          height={338}
-          alt="top"
-          className="absolute top-0 left-0 w-full h-full object-cover"
-        />
+          <Image
+            src="/picture/lucky-screen.PNG"
+            width={600}
+            height={338}
+            alt="Lucky homepage demo"
+            className="absolute top-0 left-0 w-full h-full object-cover"
+          />
         </motion.div>
 
         {/* Draggable divider */}
@@ -103,37 +98,50 @@ const Slider = () => {
             drag="x"
             dragConstraints={containerRef}
             style={{ x }}
-            id="divider"
             className="absolute top-0 bottom-0 w-1 bg-white cursor-col-resize"
           >
-            <div className="slider-handle w-4 h-8 bg-black rounded absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <div className="slider-handle w-6 h-10 sm:w-4 sm:h-8 bg-black rounded absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           </motion.div>
         )}
       </div>
-       {/* Label */}
-       <span className="mb-4 font-bold text-lg">{label}</span>
-       <p>
 
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt vero, iste, at aut dignissimos, eligendi ex hic quidem deleniti sit eos cupiditate vel dolore corporis voluptas ad harum veniam autem!
-        Corrupti in amet quaerat? Unde iusto sint eveniet atque similique doloribus praesentium ab iste, cupiditate id quaerat facilis laboriosam quibusdam accusantium tempora autem pariatur repellat vitae itaque recusandae odit non.
-</p>
+      {/* Label */}
+      <span className="mb-2 font-bold text-base sm:text-lg">{label}</span>
 
+      <p className="text-sm sm:text-base max-w-[600px] leading-relaxed">
+        For Lucky, the goal was to move beyond an “under construction” page and
+        give the brand a digital home that matched its personality. We created a
+        minimal yet engaging homepage that makes it easy for visitors to order
+        delivery, follow along on social media, or join the newsletter. We kept
+        the design subtle so the brand itself remains the focus, while carefully
+        chosen animations and transitions powered by Framer Motion add a sense
+        of polish and energy. The result is a webfront that feels alive,
+        approachable, and distinctive — helping Lucky stand out in the crowded
+        tea market.
+      </p>
     </section>
   );
 };
+
 const Slider2 = () => {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const x = useMotionValue(0);
   const [containerWidth, setContainerWidth] = useState(0);
 
+  // Recalculate width on mount + resize
   useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      const { width } = container.getBoundingClientRect();
-      setContainerWidth(width);
-      x.set(width / 2); // start in middle
-    }
+    const updateWidth = () => {
+      if (containerRef.current) {
+        const { width } = containerRef.current.getBoundingClientRect();
+        setContainerWidth(width);
+        x.set(width / 2); // start centered
+      }
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
   }, [x]);
 
   // Watch motion value and trigger video
@@ -147,39 +155,35 @@ const Slider2 = () => {
   }, [x]);
 
   return (
-    <section className="text-center mt-12 flex flex-col gap-6 place-items-center h-screen w-screen">
-      <h3>Loop Studios</h3>
+    <section className="text-center mt-12 flex flex-col gap-6 place-items-center w-full px-4">
+      <h3 className="text-lg sm:text-xl font-semibold">Loop Studios</h3>
 
       <div
-        id="slider-container"
         ref={containerRef}
-        className="relative w-full max-w-[600px] aspect-video overflow-hidden"
+        className="relative w-full rounded-md max-w-[600px] aspect-[4/3] sm:aspect-video overflow-hidden"
       >
-        {/* Background image */}
-      
+        {/* Background video */}
         <video
-            ref={videoRef}
-            src="/videos/loop-demo.mp4"
-            muted
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover"
-          />
+          ref={videoRef}
+          src="/videos/loop-demo.mp4"
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover"
+        />
 
-        {/* Overlay video instead of image */}
+        {/* Overlay image */}
         <motion.div
-          id="image-overlay"
           style={{ width: x }}
           className="absolute top-0 left-0 h-full overflow-hidden"
         >
-       <Image
-          id="image"
-          src="/picture/loop-studio.png"
-          width={600}
-          height={338}
-          alt="top"
-          className="absolute top-0 left-0 w-full h-full object-cover"
-        />
+          <Image
+            src="/picture/loop-studio.png"
+            width={600}
+            height={338}
+            alt="Loop Studio homepage demo"
+            className="absolute top-0 left-0 w-full h-full object-cover"
+          />
         </motion.div>
 
         {/* Draggable divider */}
@@ -188,17 +192,18 @@ const Slider2 = () => {
             drag="x"
             dragConstraints={containerRef}
             style={{ x }}
-            id="divider"
             className="absolute top-0 bottom-0 w-1 bg-white cursor-col-resize"
           >
-            <div className="slider-handle w-4 h-8 bg-black rounded absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <div className="slider-handle w-6 h-10 sm:w-4 sm:h-8 bg-black rounded absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
           </motion.div>
         )}
       </div>
-      <p>
 
-
-        We applied subtle design enhancements (3–10%) to the VR Headset Experiences brand, using Framer Motion to add smooth transitions and animations that bring the site to life while keeping the experience intuitive and focused.
+      <p className="text-sm sm:text-base max-w-[600px] leading-relaxed">
+        We applied subtle design enhancements (3–10%) to the VR Headset
+        Experiences brand, using Framer Motion to add smooth transitions and
+        animations that bring the site to life while keeping the experience
+        intuitive and focused.
       </p>
     </section>
   );
@@ -376,6 +381,18 @@ export default function Home() {
 
           
       </section>
+
+      <motion.footer
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center text-xs text-gray-500 py-4"
+        >
+          © 2025 — Crafted by 
+          <a href="https://humann.design" target="_blank" className="font-semibold hover:underline ml-1">
+            HUMANNDESIGN
+          </a>
+      </motion.footer>
     
     
      </div>
