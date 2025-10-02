@@ -323,9 +323,10 @@ export default function Home() {
                     damping: 20,
                     mass: 0.5,
                     bounce: 0.4}} 
-                  className="flex gap-2 bg-[black] cursor-pointer items-center p-2 rounded-sm">
+                  className="flex gap-2 bg-[black] cursor-pointer flex-col items-center p-2 rounded-sm">
                   <span className="text-md">Solutions</span>
                   <IoDiamond />
+                 
 
                 </motion.li>
                 <motion.li whileHover={{x:30, y:-10}}

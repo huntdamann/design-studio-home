@@ -24,7 +24,7 @@ AboutUsSection.displayName = "Who We Are"
 
 
 
-        <section ref={ref} id="about" className="w-[40%] h-full z-50 flex flex-col bg-transparent rounded-sm lg:bg-white text-white lg:text-black light:text-black items-center text-center">
+        <section ref={ref} className="w-[40%] h-full z-50 flex flex-col bg-transparent rounded-sm lg:bg-white text-white lg:text-black items-center text-center">
 
 
         
