@@ -358,7 +358,7 @@ export default function Home() {
       </AnimatePresence>
       
       <div className=" w-full relative">
-        <motion.button animate={{opacity: showButton ? 1 : 0}} className="fixed text-[#40e0d0] text-4xl right-3 top-3 cursor-pointer z-50" onClick={handleOpen}>
+        <motion.button animate={{opacity: showButton ? 1 : 0}} className="fixed text-[#C0C0C0] text-4xl right-3 top-3 cursor-pointer z-50" onClick={handleOpen}>
           <FiMenu  />
         </motion.button>
       </div>
