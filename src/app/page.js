@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import Link from "next/link"
 
 // React Icons
 import { IoDiamond } from "react-icons/io5";
@@ -291,7 +292,7 @@ export default function Home() {
 
           <motion.header id="nav" initial={{opacity: 0, x: -100}} animate={{opacity: 1, x: 0}} exit={{opacity: 0, x: -100}} className="rounded-tr-md z-[60] rounded-br-md  flex flex-col justify-center fixed w-[100%] lg:w-[15%] h-screen">
 
-                <FaCircleChevronLeft onClick={handleOpen} className="absolute  top-3" />
+                <FaCircleChevronLeft onClick={handleOpen} className="absolute right-3 cursor-pointer text-xl top-3" />
 
                 <ul className="  flex flex-col gap-6 justify-center lg:items-end items-center ">
 
@@ -318,17 +319,22 @@ export default function Home() {
                   <IoDiamond />
 
                 </motion.li>
+                <Link href="/solutions/freeaudit">
+                
+                
                 <motion.li whileHover={{x:30, y:-10}}
                    transition={{type: 'tween', stiffness: 100,
                     damping: 20,
                     mass: 0.5,
                     bounce: 0.4}} 
-                  className="flex gap-2 bg-[black] cursor-pointer flex-col items-center p-2 rounded-sm">
+                  className="flex gap-2 bg-[black] cursor-pointer items-center p-2 rounded-sm">
                   <span className="text-md">Solutions</span>
                   <IoDiamond />
                  
 
                 </motion.li>
+                </Link>
+
                 <motion.li whileHover={{x:30, y:-10}}
                 
                   transition={{type: 'tween', stiffness: 100,
@@ -352,7 +358,7 @@ export default function Home() {
       </AnimatePresence>
       
       <div className=" w-full relative">
-        <motion.button animate={{opacity: showButton ? 1 : 0}} className="fixed text-4xl right-3 top-3 cursor-pointer z-50" onClick={handleOpen}>
+        <motion.button animate={{opacity: showButton ? 1 : 0}} className="fixed text-[#40e0d0] text-4xl right-3 top-3 cursor-pointer z-50" onClick={handleOpen}>
           <FiMenu  />
         </motion.button>
       </div>

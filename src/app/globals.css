@@ -91,7 +91,6 @@ h2 {
   font-weight: 400;
   font-style: normal;
   font-size: 1.8rem;
-  width: 15rem;
 }
 h3 {
   font-family: "Audiowide", sans-serif;
@@ -159,7 +158,8 @@ p {
 }
 
 #nav {
-  background: linear-gradient(225deg, black 70%, silver);
+  background: #30ffff;
+  background: linear-gradient(30deg, rgba(48, 255, 255, 1) 2%, rgba(0, 0, 0, 1) 38%);
 }
 #gradient {
   background-color: linear-gradient(45deg, #000000, #222222, #40E0D0);
