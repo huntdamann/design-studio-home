@@ -13,6 +13,7 @@ import { IoAddCircleOutline } from "react-icons/io5";
 
 import { motion, AnimatePresence, useMotionValue } from 'motion/react'
 import { useRef, useState, useEffect } from "react";
+import { RemoveScroll } from "react-remove-scroll";
 
 
 import HeroSection from '../app/slices/HeroSection.js'
@@ -304,7 +305,11 @@ export default function Home() {
    {/* AnimatePresence allows smooth exit */}
       <AnimatePresence>
         {!hasEntered && (
-          <EnterScreen key="enter" onFinish={() => setHasEntered(true)} />
+
+        
+          <RemoveScroll>
+            <EnterScreen key="enter" onFinish={() => setHasEntered(true)} />
+          </RemoveScroll>
         )}
       </AnimatePresence>
      
