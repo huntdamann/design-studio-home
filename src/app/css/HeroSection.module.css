@@ -6,6 +6,12 @@
     gap: 2rem;
     flex-wrap: wrap;
   }
+
+  #prescreen {
+
+    background: linear-gradient(to bottom, #202525, #2e5555, #348a8b, #2ec3c3, #00ffff);
+    
+  }
   
   .videoWrapper, .heroContent {
     flex: 1 1 500px;

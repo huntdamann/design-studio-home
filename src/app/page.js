@@ -6,6 +6,8 @@ import Link from "next/link"
 import { IoDiamond } from "react-icons/io5";
 import { FaCircleChevronLeft } from "react-icons/fa6";
 import { FiMenu } from "react-icons/fi";
+import { IoAddCircleOutline } from "react-icons/io5";
+
 
 
 
@@ -19,6 +21,9 @@ import HowWeCreateSection from "./slices/HowWeCreateSection.js";
 import { ExpandableCard } from "./components/ui/ExpandableCard.js";
 import BeforeAfterSlider from './slices/BeforeAfterSlider.js'
 import { useInView } from 'react-intersection-observer';
+import SimpleMenu from "./components/custom/SimpleMenu.js";
+import EnterScreen from "./slices/EnterScreen";
+
 
 
 const Slider = () => {
@@ -215,6 +220,12 @@ const Slider2 = () => {
 export default function Home() {
 
 
+
+  //Keeps track if user has entered the homepage
+  const [hasEntered, setHasEntered] = useState(false);
+
+
+
   // Intersection Observer Inialization 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -223,6 +234,11 @@ export default function Home() {
 
   // Scroll to "Who We Are" Section
   const contactRef = useRef(null);
+
+
+  // Handles whether a user has chosen to enter into the home screen of the page
+  const [isLoaded, setIsLoaded] = useState(false);
+
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -284,6 +300,13 @@ export default function Home() {
   }, [isOpen]);
   return (
    <>
+
+   {/* AnimatePresence allows smooth exit */}
+      <AnimatePresence>
+        {!hasEntered && (
+          <EnterScreen key="enter" onFinish={() => setHasEntered(true)} />
+        )}
+      </AnimatePresence>
      
      <div className="relative w-screen h-screen">
 
@@ -364,6 +387,7 @@ export default function Home() {
       </div>
       <HeroSection />
       <AboutUsSection ref={contactRef} />
+      {/* <SimpleMenu /> */}
       <HowWeCreateSection ref={howRef} />
 
       {/* <section className="flex flex-col items-center">

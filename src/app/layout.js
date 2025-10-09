@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Audiowide } from "next/font/google";
 import "./globals.css";
 import "@/app/css/flaticon.css"
+import EnterScreen from "./slices/EnterScreen";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

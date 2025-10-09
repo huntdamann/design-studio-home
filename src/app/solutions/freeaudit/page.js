@@ -80,7 +80,7 @@ AboutUsSection.displayName = "Who We Are"
 
                 <FaCircleChevronLeft onClick={handleOpen} className="absolute right-3 cursor-pointer text-xl top-3" />
 
-                <ul className="  flex flex-col gap-6 justify-center lg:items-end items-center ">
+                <ul className="flex flex-col gap-6 justify-center lg:items-end items-center ">
 
 
                 <Link href="/">
