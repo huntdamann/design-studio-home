@@ -26,7 +26,7 @@ const EnterScreen = forwardRef( ({ onFinish }, ref) =>  {
 
 
             <CardContainer className="inter-var">
-            <CardBody className="bg-transparent flex flex-col items-center relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-green-50/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 ">
+            <CardBody className="bg-transparent flex flex-col items-center relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-green-50/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 ">
                 <CardItem
                 translateZ="50"
                 className="text-xl text-center font-bold text-neutral-600 dark:text-white"
