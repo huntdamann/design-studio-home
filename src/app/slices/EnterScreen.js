@@ -11,6 +11,7 @@ import { CardContainer, CardBody, CardItem } from "../components/ui/3d-card";
 const EnterScreen = forwardRef( ({ onFinish }, ref) =>  { 
 
 
+    EnterScreen.displayName = "Enter"
 
 
     const handleEnter = () => {
