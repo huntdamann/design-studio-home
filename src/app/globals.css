@@ -105,6 +105,10 @@ p {
   font-style: normal;
   font-size: medium;
 }
+
+button {
+  cursor: pointer;
+}
 #offerings {
   font-family: "Audiowide", sans-serif;
   font-weight: 400;
@@ -164,7 +168,7 @@ p {
 }
 #nav {
   background: #30ffff;
-  background: linear-gradient(30deg, rgba(48, 255, 255, 1) 2%, rgba(0, 0, 0, 1) 38%);
+  background: linear-gradient(30deg, #30ffff 2%, rgba(0, 0, 0, 1) 38%);
 }
 #gradient {
   background-color: linear-gradient(45deg, #000000, #222222, #40E0D0);

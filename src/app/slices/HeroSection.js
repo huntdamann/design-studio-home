@@ -21,7 +21,7 @@ const HeroSection = () =>  {
                 <p>Breathe life into your brand with a touch of creativity from the human mind.</p>
                 <a href="https://calendly.com/hunter-mann2433/30min">
                 
-                    <button>Free Consultation</button>
+                    <button className="border w-[10rem] bg-[#30ffffaf] hover:bg-black p-2 rounded-md">Free Consultation</button>
 
                 </a>
                

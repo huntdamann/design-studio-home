@@ -24,6 +24,7 @@ import BeforeAfterSlider from './slices/BeforeAfterSlider.js'
 import { useInView } from 'react-intersection-observer';
 import SimpleMenu from "./components/custom/SimpleMenu.js";
 import EnterScreen from "./slices/EnterScreen";
+import TemplateSite from "./slices/TemplateSite.js";
 
 
 
@@ -394,6 +395,7 @@ export default function Home() {
       <AboutUsSection ref={contactRef} />
       {/* <SimpleMenu /> */}
       <HowWeCreateSection ref={howRef} />
+      <TemplateSite />
 
       {/* <section className="flex flex-col items-center">
         <h2>Blog</h2>
