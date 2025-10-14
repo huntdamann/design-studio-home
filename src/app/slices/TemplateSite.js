@@ -38,6 +38,27 @@ export default function TemplateSite() {
             <button className="border w-[10rem] bg-[#30ffffaf] hover:bg-black p-2 rounded-md">View</button>
 
             </a>
+
+            <div className="flex flex-col gap-2">
+               <a href="https://designer-bentolio.vercel.app">
+                
+                 <h3>{siteDescriptions[1].name}</h3>
+
+              </a>
+                <motion.div initial={{ opacity: 0}} whileInView={{ opacity: 1}} className="relative min-h-[15rem]">
+                    <Image src={siteDescriptions[1].thumbnail}  alt="flex" fill className="object-cover" />
+                </motion.div>
+
+
+            </div>
+
+           <p className="w-[30rem]">{siteDescriptions[1].description}</p>
+
+            <a href="https://designer-bentolio.vercel.app">
+                
+            <button className="border w-[10rem] bg-[#30ffffaf] hover:bg-black p-2 rounded-md">View</button>
+
+            </a>
            
 
            <div className=" flex flex-col mt-[5rem]">

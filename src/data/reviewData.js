@@ -66,6 +66,14 @@ export const reviews = [
       "A professional, modern, and fully responsive website template for restaurants, built with NextJS, TailwindCSS, and Framer Motion. This template includes various features seen across other professional brands for a sleek user experience.",
 
       thumbnail: "/picture/wingland/thumbnail.jpeg"
+    },
+    {
+      id: 2,
+      name: "Bentolio",
+      description: 
+      "A clean, dynamic, and fully responsive portfolio template built with NextJS, TailwindCSS, and Framer Motion. Designed with a modern Bento grid layout, this template highlights projects and visuals in an engaging, minimalist format ideal for creatives and professionals alike.",
+
+      thumbnail: "/picture/wingland/bento-design.webp"
     }
   ]
   
