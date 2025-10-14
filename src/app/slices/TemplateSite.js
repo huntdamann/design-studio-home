@@ -17,6 +17,7 @@ export default function TemplateSite() {
 
           
            <h2> Template Sites</h2>
+           
 
             <div className="flex flex-col gap-2">
                <a href="https://wingland-revitalized.vercel.app">
@@ -31,7 +32,7 @@ export default function TemplateSite() {
 
             </div>
 
-           <p className="w-[30rem]">{siteDescriptions[0].description}</p>
+           <p className="lg:w-[30rem]">{siteDescriptions[0].description}</p>
 
             <a href="https://wingland-revitalized.vercel.app">
                 
@@ -52,7 +53,7 @@ export default function TemplateSite() {
 
             </div>
 
-           <p className="w-[30rem]">{siteDescriptions[1].description}</p>
+           <p className="lg:w-[30rem]">{siteDescriptions[1].description}</p>
 
             <a href="https://designer-bentolio.vercel.app">
                 
