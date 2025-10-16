@@ -41,7 +41,7 @@ export default function SimpleMenu() {
 
             <section className='w-full h-3/4 flex flex-col items-center justify-center'>
                 <h2>What We Offer </h2>
-                <ul className='flex flex-col w-1/4'>
+                <ul className='flex flex-col w-3/4 lg:w-2/4 gap-5 mt-5'>
                     <motion.li animate={{ x: brandPlus || leadPlus? 200 : 0, opacity: brandPlus || leadPlus? 0 : 1}} className='w-full relative'>
 
                         <div className='flex w-full justify-between items-center border-b'>

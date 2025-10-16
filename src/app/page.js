@@ -393,7 +393,7 @@ export default function Home() {
       </div>
       <HeroSection />
       <AboutUsSection ref={contactRef} />
-      {/* <SimpleMenu /> */}
+      <SimpleMenu />
       <HowWeCreateSection ref={howRef} />
       <TemplateSite />
 
@@ -412,7 +412,7 @@ export default function Home() {
       
 
     
-      <section className="text-center mt-[10rem] justify-center flex items-center flex-col">
+      <section className="text-center mt-[10rem] mb-[5rem] justify-center flex items-center flex-col">
         <h1>Work</h1>
           {sliderSection}
           {sliderSectionTwo}
