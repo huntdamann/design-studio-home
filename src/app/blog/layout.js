@@ -2,6 +2,7 @@ import { Footer, Layout, Navbar, ThemeSwitch } from 'nextra-theme-blog'
 import { Banner, Head, Search } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-blog/style.css'
+import '../../app/globals.css'
 
 export const metadata = {
   title: 'Blog Example',
@@ -28,7 +29,7 @@ export default async function BlogLayout({ children, metadata }) {
   const heroImage = metadata?.image || '/picture/main_logo.png';  // Default hero image
 
   return (
-    <Layout banner={banner}>
+    <Layout className='text-white' banner={banner}>
       <Navbar pageMap={await getPageMap()}>
         <Search />
         <ThemeSwitch />
@@ -43,7 +44,12 @@ export default async function BlogLayout({ children, metadata }) {
         />
       </div>
 
-      {children}
+      <div className='text-white'>
+
+        {children}
+
+      </div>
+
 
       <Footer>
         <abbr

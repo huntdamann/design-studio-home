@@ -68,6 +68,13 @@
     }
     
   }
+  h1 {
+    color: white;
+  }
+  h2 {
+    color: white;
+  }
+
 }
 body {
   background: var(--background);
@@ -77,6 +84,10 @@ body {
 
 .html {
   scroll-behavior: smooth;
+}
+/* Force white text in light mode */
+html[data-theme='light'] {
+  color: white;
 }
 
 
