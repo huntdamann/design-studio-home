@@ -43,7 +43,7 @@ function FooterSection({ workHandle, whoHandle  }) {
         {/* Right Section — Connect */}
         <div className="flex-1">
           <h3 className="text-lg font-semibold mb-6 text-[#72d0c8] uppercase tracking-wide">
-            Let's Connect
+            Let&apos;s Connect
           </h3>
           <p className="text-sm text-gray-300 mb-6 leading-relaxed">
             We would love to hear from you! Click on the button below to schedule a call to discuss the next step together.
