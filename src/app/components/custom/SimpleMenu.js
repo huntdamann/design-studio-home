@@ -1,154 +1,137 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-
-import { motion, useInView } from 'motion/react'
+import { useState } from 'react';
+import { motion } from 'motion/react';
 import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5";
 
-
 export default function SimpleMenu() {
-   
-    const [webPlus, webPlusClicked] = useState(false)
-    const [brandPlus, brandPlusClicked] = useState(false)
-    const [leadPlus, leadPlusClicked] = useState(false)
+    const [webPlus, webPlusClicked] = useState(false);
+    const [brandPlus, brandPlusClicked] = useState(false);
+    const [leadPlus, leadPlusClicked] = useState(false);
 
+    const webOptions = ['UI Design', 'UX Design', 'SEO Management', 'Domain Management', 'Website Development'];
+    const leadOptions = ['B2B Leads', 'Web-scraped Leads', 'Business Research'];
+    const brandOptions = ['Brand Development', 'Logo Development', 'Typography', 'Color Palette + Brand Colors'];
 
-    const webOptions = ['UI Design', 'UX Design', 'SEO Management', 'Domain Management', 'Website Development']
-    const leadOptions = ['B2B Leads', 'Web-scraped Leads', 'Business Research']
-    const brandOptions = ['Brand Development', 'Logo Development', 'Typography', 'Color Palette + Brand Colors']
+    const handleWebClick = () => webPlusClicked(prev => !prev);
+    const handleBrandClick = () => brandPlusClicked(prev => !prev);
+    const handleLeadClick = () => leadPlusClicked(prev => !prev);
 
-
-    const handleWebClick = () => {
-
-        webPlusClicked(prev => !prev)
-
-    }
-    const handleBrandClick = () => {
-
-        brandPlusClicked(prev => !prev)
-
-    }
-    const handleLeadClick = () => {
-
-        leadPlusClicked(prev => !prev)
-
-    }
-   
-  
     return (
-      
-        <>
+        <section className='w-full h-3/4 flex flex-col items-center justify-center'>
+            <h2>What We Offer </h2>
+            <ul className='flex flex-col w-3/4 lg:w-2/4 gap-5 mt-5'>
+                
+                {/* Web Menu */}
+                <motion.li
+                    animate={{ x: brandPlus || leadPlus ? 200 : 0, opacity: brandPlus || leadPlus ? 0 : 1 }}
+                    className='w-full relative'
+                    onClick={handleWebClick}
 
-            <section className='w-full h-3/4 flex flex-col items-center justify-center'>
-                <h2>What We Offer </h2>
-                <ul className='flex flex-col w-3/4 lg:w-2/4 gap-5 mt-5'>
-                    <motion.li animate={{ x: brandPlus || leadPlus? 200 : 0, opacity: brandPlus || leadPlus? 0 : 1}} className='w-full relative'>
+                >
+                    <motion.div
+                        className='flex w-full justify-between items-center border-b p-2'
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                    >
+                        <span>UI/UX Design</span>
+                        {webPlus ? <IoRemoveCircleOutline className="cursor-pointer" /> : <IoAddCircleOutline className="cursor-pointer" />}
+                    </motion.div>
 
-                        <div className='flex w-full justify-between items-center border-b'>
-                            <span>UI/UX Design</span>
-                            <div className='flex'>
-                                {webPlus ? (
-                                    <IoRemoveCircleOutline onClick={handleWebClick} className="cursor-pointer" />
-                                ) : (
-                                    <IoAddCircleOutline onClick={handleWebClick} className="cursor-pointer" />
-                                )}
-                                </div>
-                            
+                    {webPlus && (
+                        <motion.ul
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            className='absolute top-full left-0 w-full bg-white text-black rounded-md shadow-md p-2 z-10'
+                        >
+                            {webOptions.map((option, idx) => (
+                                <motion.li
+                                    key={idx}
+                                    className='p-1 cursor-pointer'
+                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{ scale: 1.05, backgroundColor: "#f0f0f0" }}
+                                >
+                                    {option}
+                                </motion.li>
+                            ))}
+                        </motion.ul>
+                    )}
+                </motion.li>
 
-                        </div>
-                        
-                        {webPlus && (
+                {/* Branding Menu */}
+                <motion.li
+                    animate={{ x: webPlus || leadPlus ? 200 : 0, opacity: webPlus || leadPlus ? 0 : 1 }}
+                    className='w-full relative'
+                >
+                    <motion.div
+                        className='flex w-full justify-between items-center border-b p-2'
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        onClick={handleBrandClick}
+                    >
+                        <span>Branding</span>
+                        {brandPlus ? <IoRemoveCircleOutline className="cursor-pointer" /> : <IoAddCircleOutline className="cursor-pointer" />}
+                    </motion.div>
 
+                    {brandPlus && (
+                        <motion.ul
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            className='absolute top-full left-0 w-full bg-white text-black rounded-md shadow-md p-2 z-10'
+                        >
+                            {brandOptions.map((option, idx) => (
+                                <motion.li
+                                    key={idx}
+                                    className='p-1 cursor-pointer'
+                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{ scale: 1.05, backgroundColor: "#f0f0f0" }}
+                                >
+                                    {option}
+                                </motion.li>
+                            ))}
+                        </motion.ul>
+                    )}
+                </motion.li>
 
-                            <motion.ul initial={{opacity: 0}} animate={{opacity:  webPlus? 1 : 0}} transition={{delay: 0.2}} className='absolute'>
-                                {webOptions.map((n, index) => (
+                {/* Lead Generation Menu */}
+                <motion.li
+                    animate={{ x: webPlus || brandPlus ? 200 : 0, opacity: webPlus || brandPlus ? 0 : 1 }}
+                    className='w-full relative'
+                >
+                    <motion.div
+                        className='flex w-full justify-between items-center border-b p-2'
+                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        onClick={handleLeadClick}
+                    >
+                        <span>Lead Generation</span>
+                        {leadPlus ? <IoRemoveCircleOutline className="cursor-pointer" /> : <IoAddCircleOutline className="cursor-pointer" />}
+                    </motion.div>
 
-                                    <li key={index}>{n} </li>
+                    {leadPlus && (
+                        <motion.ul
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            className='absolute top-full left-0 w-full bg-white text-black rounded-md shadow-md p-2 z-10'
+                        >
+                            {leadOptions.map((option, idx) => (
+                                <motion.li
+                                    key={idx}
+                                    className='p-1 cursor-pointer'
+                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{ scale: 1.05, backgroundColor: "#f0f0f0" }}
+                                >
+                                    {option}
+                                </motion.li>
+                            ))}
+                        </motion.ul>
+                    )}
+                </motion.li>
 
-                                ))}
-                                
-                            </motion.ul>
-
-
-
-                        )}
-                        
-                       
-
-                    </motion.li>
-                    <motion.li animate={{ x: webPlus || leadPlus? 200 : 0, opacity: webPlus || leadPlus? 0 : 1}} className='w-full relative'>
-
-                            <div className='flex w-full justify-between items-center border-b'>
-                                <span>Branding</span>
-                                <div className='flex'>
-                                {brandPlus ? (
-                                    <IoRemoveCircleOutline onClick={handleBrandClick} className="cursor-pointer" />
-                                ) : (
-                                    <IoAddCircleOutline onClick={handleBrandClick} className="cursor-pointer" />
-                                )}
-                                </div>
-                                
-
-                            </div>
-
-                            {brandPlus && (
-
-
-                                <motion.ul initial={{opacity: 0}} animate={{opacity:  brandPlus? 1 : 0}} transition={{delay: 0.2}} className='absolute'>
-                                    {brandOptions.map((n, index) => (
-
-                                        <li key={index}>{n} </li>
-
-                                    ))}
-                                    
-                                </motion.ul>
-
-
-
-                            )}
-
-
-
-                    </motion.li>
-                    <motion.li animate={{ x: webPlus || brandPlus? 200 : 0, opacity: webPlus || brandPlus? 0 : 1}} className='w-full relative'>
-
-                            <div className='flex w-full justify-between items-center border-b'>
-                                <span>Lead Generation</span>
-                                <div className='flex'>
-                                {leadPlus ? (
-                                    <IoRemoveCircleOutline onClick={handleLeadClick} className="cursor-pointer" />
-                                ) : (
-                                    <IoAddCircleOutline onClick={handleLeadClick} className="cursor-pointer" />
-                                )}
-                                </div>
-                                
-
-                            </div>
-
-                            {leadPlus && (
-
-
-                                <motion.ul initial={{opacity: 0}} animate={{opacity:  leadPlus? 1 : 0}} transition={{delay: 0.2}} className='absolute'>
-                                    {leadOptions.map((n, index) => (
-
-                                        <li key={index}>{n} </li>
-
-                                    ))}
-                                    
-                                </motion.ul>
-
-
-
-                            )}
-
-
-
-                    </motion.li>
-                   
-                                        
-                  
-                </ul>
-            </section>
-        </>
+            </ul>
+        </section>
     );
-  }
+}

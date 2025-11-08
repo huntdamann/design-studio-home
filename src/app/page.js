@@ -19,6 +19,7 @@ import { RemoveScroll } from "react-remove-scroll";
 import HeroSection from '../app/slices/HeroSection.js'
 import AboutUsSection from "./slices/AboutUsSection.js";
 import HowWeCreateSection from "./slices/HowWeCreateSection.js";
+import FooterSection from "./slices/FooterSection.js";
 import { ExpandableCard } from "./components/ui/ExpandableCard.js";
 import BeforeAfterSlider from './slices/BeforeAfterSlider.js'
 import { useInView } from 'react-intersection-observer';
@@ -257,27 +258,36 @@ export default function Home() {
     setIsOpen(false)
   }
 
+  //Scroll to "How We Create Section"
+  const workRef = useRef(null);
 
-  // Menu Button Show logic
-  const [showButton, setShowButton] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+  const scrollToWork = () => {
+    workRef.current?.scrollIntoView({behavior: 'smooth'})
+    setIsOpen(false)
+  }
 
-      if (currentScrollY < lastScrollY) {
-        setShowButton(true); // Scrolling up
-      } else {
-        setShowButton(false); // Scrolling down
-      }
 
-      setLastScrollY(currentScrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
+  // // Menu Button Show logic
+  // const [showButton, setShowButton] = useState(true);
+  // const [lastScrollY, setLastScrollY] = useState(0);
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScrollY = window.scrollY;
+
+  //     if (currentScrollY < lastScrollY) {
+  //       setShowButton(true); // Scrolling up
+  //     } else {
+  //       setShowButton(false); // Scrolling down
+  //     }
+
+  //     setLastScrollY(currentScrollY);
+  //   };
+  //   window.addEventListener('scroll', handleScroll);
+
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, [lastScrollY]);
 
 
   const sliderSection = Slider()
@@ -303,7 +313,7 @@ export default function Home() {
   return (
    <>
 
-   {/* AnimatePresence allows smooth exit */}
+   {/* AnimatePresence allows smooth exit
       <AnimatePresence>
         {!hasEntered && (
 
@@ -312,7 +322,7 @@ export default function Home() {
             <EnterScreen key="enter" onFinish={() => setHasEntered(true)} />
           </RemoveScroll>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
      
      <div className="relative w-screen h-screen">
 
@@ -370,6 +380,7 @@ export default function Home() {
                   damping: 20,
                   mass: 0.5,
                   bounce: 0.4}} 
+                  onClick={scrollToWork}
                 className="flex gap-2 bg-[black] cursor-pointer items-center p-2 rounded-sm">
                   <span className="text-md">Work</span>
                   <IoDiamond />
@@ -386,11 +397,39 @@ export default function Home() {
       )}
       </AnimatePresence>
       
-      <div className=" w-full relative">
-        <motion.button animate={{opacity: showButton ? 1 : 0}} className="fixed text-[#C0C0C0] text-4xl right-3 top-3 cursor-pointer z-50" onClick={handleOpen}>
-          <FiMenu  />
-        </motion.button>
+      <header className="w-full bg-white shadow-sm">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4">
+        
+        {/* Logo */}
+        <div className="flex items-center">
+          <Image
+            src="/picture/logo.png"
+            width={150}
+            height={200}
+            alt="Humann Design Logo"
+            className="w-32 sm:w-40 lg:w-48 h-auto"
+          />
+        </div>
+
+        {/* Right section (tagline + menu) */}
+        <div className="flex items-center gap-4 sm:gap-8">
+          {/* Tagline — hidden on small screens */}
+          <span className="hidden md:block text-black font-semibold text-sm lg:text-lg whitespace-nowrap">
+            Need a Site? Call <span className="text-[black] font-bold">731.882.2974</span>
+          </span>
+
+          {/* Mobile menu icon */}
+          <motion.button
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            onClick={handleOpen}
+            className="text-[#72d0c8] text-4xl lg:text-5xl cursor-pointer z-50"
+          >
+            <FiMenu />
+          </motion.button>
+        </div>
       </div>
+    </header>
       <HeroSection />
       <AboutUsSection ref={contactRef} />
       <SimpleMenu />
@@ -412,26 +451,15 @@ export default function Home() {
       
 
     
-      <section className="text-center mt-[10rem] mb-[5rem] justify-center flex items-center flex-col">
+      <section ref={workRef} className="text-center mt-[10rem] mb-[5rem] justify-center flex items-center flex-col">
         <h1>Work</h1>
           {sliderSection}
           {sliderSectionTwo}
 
           
       </section>
+      <FooterSection workHandle={scrollToWork} whoHandle={scrollToContact} />
 
-      <motion.footer
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center text-xs text-gray-500 py-4"
-        >
-          © 2025 — Crafted by 
-          <a href="https://humann.design" target="_blank" className="font-semibold hover:underline ml-1">
-            HUMANNDESIGN
-          </a>
-      </motion.footer>
-    
     
      </div>
    </>
